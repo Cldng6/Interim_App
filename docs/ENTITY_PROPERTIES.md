@@ -1,4 +1,4 @@
-# Propriétés des entités
+# Propriétés des entités – MVP Intérim
 
 ---
 
@@ -29,6 +29,7 @@
 | dateOfBirth | date | date de naissance |
 | skills | text | compétences (texte libre) |
 | cvFilename | string | nom du fichier CV uploadé (nullable) |
+| avatar | Media | OneToOne, nullable |
 | createdAt | datetime | |
 | updatedAt | datetime | |
 
@@ -81,6 +82,19 @@
 | status | string | `pending`, `accepted`, `refused` |
 | createdAt | datetime | date de candidature |
 | updatedAt | datetime | dernière mise à jour du statut |
+
+---
+
+## Media *(stockage local, lié polymorphiquement)*
+| Propriété | Type | Notes |
+|---|---|---|
+| id | int | clé primaire |
+| filename | string | nom du fichier généré (stocké sur le filesystem) |
+| originalName | string | nom d'origine du fichier uploadé |
+| mimeType | string | ex : `image/jpeg`, `image/png` |
+| size | int | taille en octets |
+| type | string | contexte : `worker_avatar` |
+| createdAt | datetime | date d'upload |
 
 ---
 
