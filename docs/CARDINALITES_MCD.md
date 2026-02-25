@@ -12,3 +12,5 @@
 | 8 | CANDIDATURE | concerne | MISSION | `1,1` |
 | 9 | WORKER | soumet | CANDIDATURE | `0,n` |
 | 10 | CANDIDATURE | est soumise par | WORKER | `1,1` |
+| 11 | WORKER | a | MEDIA | `0,1` |
+| 12 | MEDIA | appartient à | WORKER | `1,1` |
