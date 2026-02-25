@@ -102,3 +102,104 @@
 - Un Worker ne peut postuler qu'une seule fois à la même Mission → contrainte d'unicité sur `(worker, mission)`
 - Une Mission ne peut être modifiée que par la Company propriétaire (ownership)
 - Une Candidature ne peut être consultée que par le Worker concerné ou la Company propriétaire de la Mission
+
+
+
+# MPD – MVP Intérim
+
+---
+
+## user
+| Colonne | Contrainte |
+|---|---|
+| **id** (PK) | NOT NULL |
+| email | NOT NULL, UNIQUE |
+| password | NOT NULL |
+| roles | NOT NULL |
+| status | NOT NULL, défaut `pending` |
+| created_at | NOT NULL |
+| updated_at | NOT NULL |
+
+---
+
+## worker
+| Colonne | Contrainte |
+|---|---|
+| **id** (PK) | NOT NULL |
+| **user_id** (FK → user.id) | NOT NULL, UNIQUE |
+| first_name | NOT NULL |
+| last_name | NOT NULL |
+| phone | NULL |
+| address | NULL |
+| city | NULL |
+| zip_code | NULL |
+| date_of_birth | NULL |
+| skills | NULL |
+| cv_filename | NULL |
+| created_at | NOT NULL |
+| updated_at | NOT NULL |
+
+---
+
+## company
+| Colonne | Contrainte |
+|---|---|
+| **id** (PK) | NOT NULL |
+| **user_id** (FK → user.id) | NOT NULL, UNIQUE |
+| company_name | NOT NULL |
+| siret | NOT NULL, UNIQUE |
+| address | NULL |
+| city | NULL |
+| zip_code | NULL |
+| sector | NULL |
+| phone | NULL |
+| website | NULL |
+| created_at | NOT NULL |
+| updated_at | NOT NULL |
+
+---
+
+## mission
+| Colonne | Contrainte |
+|---|---|
+| **id** (PK) | NOT NULL |
+| **company_id** (FK → company.id) | NOT NULL |
+| title | NOT NULL |
+| description | NOT NULL |
+| city | NOT NULL |
+| start_date | NOT NULL |
+| end_date | NULL |
+| hourly_rate | NULL |
+| contract_type | NOT NULL |
+| slots | NOT NULL, défaut `1` |
+| status | NOT NULL, défaut `draft` |
+| created_at | NOT NULL |
+| updated_at | NOT NULL |
+
+---
+
+## candidature
+| Colonne | Contrainte |
+|---|---|
+| **id** (PK) | NOT NULL |
+| **worker_id** (FK → worker.id) | NOT NULL |
+| **mission_id** (FK → mission.id) | NOT NULL |
+| cover_letter | NULL |
+| status | NOT NULL, défaut `pending` |
+| created_at | NOT NULL |
+| updated_at | NOT NULL |
+| — | UNIQUE (worker_id, mission_id) |
+
+---
+
+## media
+| Colonne | Contrainte |
+|---|---|
+| **id** (PK) | NOT NULL |
+| **worker_id** (FK → worker.id) | NOT NULL, UNIQUE |
+| filename | NOT NULL |
+| original_name | NOT NULL |
+| mime_type | NOT NULL |
+| size | NOT NULL |
+| type | NOT NULL, défaut `worker_avatar` |
+| created_at | NOT NULL |
