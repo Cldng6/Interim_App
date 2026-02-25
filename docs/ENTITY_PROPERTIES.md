@@ -29,7 +29,6 @@
 | dateOfBirth | date | date de naissance |
 | skills | text | compétences (texte libre) |
 | cvFilename | string | nom du fichier CV uploadé (nullable) |
-| avatar | Media | OneToOne, nullable |
 | createdAt | datetime | |
 | updatedAt | datetime | |
 
@@ -85,10 +84,11 @@
 
 ---
 
-## Media *(stockage local, lié polymorphiquement)*
+## Media *(OneToOne → Worker, côté Media)*
 | Propriété | Type | Notes |
 |---|---|---|
 | id | int | clé primaire |
+| worker | Worker | OneToOne, nullable (clé étrangère portée par Media) |
 | filename | string | nom du fichier généré (stocké sur le filesystem) |
 | originalName | string | nom d'origine du fichier uploadé |
 | mimeType | string | ex : `image/jpeg`, `image/png` |
