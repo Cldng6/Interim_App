@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@source not "../../public";
+
+body {
+    @apply bg-gray-300 min-h-screen flex items-center justify-center;
+}
+
+.container-div {
+    @apply bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto mt-10;
+}
+
