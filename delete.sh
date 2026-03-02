@@ -1,0 +1,1 @@
+rm -rf public/build/ && rm -rf node_modules/ && rm -rf package-lock.json && rm -rf vendor/ && rm -rf var/ && rm -rf .symfony.lock
