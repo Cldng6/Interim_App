@@ -1,11 +1,14 @@
 @import "tailwindcss";
-@source not "../../public";
+@source "../../public";
 
-body {
-    @apply bg-gray-300 min-h-screen flex items-center justify-center;
+@layer base {
+
+    body {
+        @apply bg-gray-300 font-sans text-gray-800;
+    }
+
+    .container-div {
+        @apply bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto mt-10;
+    }
+
 }
-
-.container-div {
-    @apply bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto mt-10;
-}
-
